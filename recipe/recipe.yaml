@@ -1,13 +1,13 @@
 context:
-  version: 7.2.1
+  version: "7.2.2"
 
 package:
   name: jetson-stats
   version: ${{ version }}
 
 source:
-- url: https://pypi.org/packages/source/j/jetson-stats/jetson_stats-${{ version }}.tar.gz
-  sha256: 90f74f817a2327d001fc0e9e2a348b78b048b718567a4236b3207a6b756f4d0f
+  - url: https://pypi.org/packages/source/j/jetson-stats/jetson_stats-${{ version }}.tar.gz
+    sha256: 78dd111431408e156b73a80d7dc9355f41aa59b5f487d99a52f4fa55eae8ebda
 
 build:
   skip: win
@@ -15,39 +15,39 @@ build:
   script: ${{ PYTHON }} -m pip install . --no-deps --no-build-isolation
   python:
     entry_points:
-    - jetson_config = jtop.jetson_config:main
-    - jetson_release = jtop.jetson_release:main
-    - jetson_swap = jtop.jetson_swap:main
-    - jtop = jtop.__main__:main
+      - jetson_config = jtop.jetson_config:main
+      - jetson_release = jtop.jetson_release:main
+      - jetson_swap = jtop.jetson_swap:main
+      - jtop = jtop.__main__:main
   noarch: python
 
 requirements:
   host:
-  - python ${{ python_min }}.*
-  - setuptools >=61.0
-  - wheel
-  - pip
+    - python ${{ python_min }}.*
+    - setuptools >=61.0
+    - wheel
+    - pip
   run:
-  - python >=${{ python_min }}
-  - smbus2
-  - distro
-  - nvidia-ml-py >=13.595.45
+    - python >=${{ python_min }}
+    - smbus2
+    - distro
+    - nvidia-ml-py >=13.595.45
 
 tests:
-- python:
-    pip_check: true
-    python_version:
+  - python:
+      pip_check: true
+      python_version:
         - ${{ python_min }}.*
         - "*"
-    imports:
-    - jtop
-- script:
-    - jtop --version
-  requirements:
-    run:
-    - python ${{ python_min }}.*
-- script:
-    - jtop --version
+      imports:
+        - jtop
+  - script:
+      - jtop --version
+    requirements:
+      run:
+        - python ${{ python_min }}.*
+  - script:
+      - jtop --version
 
 about:
   summary: Interactive system-monitor and process viewer for all NVIDIA Jetson [Thor, Orin, Xavier, Nano, TX] series
@@ -64,7 +64,7 @@ about:
     - Works with all NVIDIA Jetpack
   license: AGPL-3.0-only
   license_file:
-  - LICENSE
+    - LICENSE
   documentation: https://rnext.it/jetson_stats
   repository: https://github.com/rbonghi/jetson_stats
   homepage: https://rnext.it/jetson_stats

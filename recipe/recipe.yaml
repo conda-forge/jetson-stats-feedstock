@@ -1,5 +1,5 @@
 context:
-  version: "7.2.2"
+  version: "7.3.0"
 
 package:
   name: jetson-stats
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/j/jetson-stats/jetson_stats-${{ version }}.tar.gz
-    sha256: 78dd111431408e156b73a80d7dc9355f41aa59b5f487d99a52f4fa55eae8ebda
+    sha256: fe8453abcd65ef35bfdf393f111d06164f9b6a5a0a002ed3ce7b738ce356fe7f
 
 build:
   skip: win
